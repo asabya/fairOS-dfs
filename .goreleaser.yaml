@@ -106,51 +106,51 @@ checksum:
   name_template: 'checksums.txt'
 snapshot:
   name_template: "{{ incpatch .Version }}-snapshot"
-dockers:
-  - image_templates:
-      - "fairdatasociety/fairos-dfs:v{{ .Version }}-amd64"
-    use: buildx
-    ids:
-      - dfs-linux-amd64
-    goarch: amd64
-    dockerfile: Dockerfile.goreleaser
-    build_flag_templates:
-      - "--platform=linux/amd64"
-      - "--pull"
-      - "--label=org.opencontainers.image.created={{.Date}}"
-      - "--label=org.opencontainers.image.title={{.ProjectName}}"
-      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-      - "--label=org.opencontainers.image.version={{.Version}}"
-  - image_templates:
-      - "fairdatasociety/fairos-dfs:v{{ .Version }}-arm64"
-    use: buildx
-    ids:
-      - dfs-linux-arm64
-    goarch: arm64
-    dockerfile: Dockerfile.goreleaser
-    build_flag_templates:
-      - "--platform=linux/arm64"
-      - "--pull"
-      - "--label=org.opencontainers.image.created={{.Date}}"
-      - "--label=org.opencontainers.image.title={{.ProjectName}}"
-      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-      - "--label=org.opencontainers.image.version={{.Version}}"
-docker_manifests:
-  - name_template: fairdatasociety/fairos-dfs:v{{ .Major }}
-    image_templates:
-      - fairdatasociety/fairos-dfs:v{{ .Version }}-amd64
-      - fairdatasociety/fairos-dfs:v{{ .Version }}-arm64
-    skip_push: auto
-  - name_template: fairdatasociety/fairos-dfs:v{{ .Major }}.{{ .Minor }}
-    image_templates:
-      - fairdatasociety/fairos-dfs:v{{ .Version }}-amd64
-      - fairdatasociety/fairos-dfs:v{{ .Version }}-arm64
-    skip_push: auto
-  - name_template: fairdatasociety/fairos-dfs:v{{ .Major }}.{{ .Minor }}.{{ .Patch }}{{ with .Prerelease }}-{{ . }}{{ end }}
-    image_templates:
-      - fairdatasociety/fairos-dfs:v{{ .Version }}-amd64
-      - fairdatasociety/fairos-dfs:v{{ .Version }}-arm64
-  - name_template: fairdatasociety/fairos-dfs:latest
-    image_templates:
-      - fairdatasociety/fairos-dfs:v{{ .Version }}-amd64
-      - fairdatasociety/fairos-dfs:v{{ .Version }}-arm64
+#dockers:
+#  - image_templates:
+#      - "fairdatasociety/fairos-dfs:v{{ .Version }}-amd64"
+#    use: buildx
+#    ids:
+#      - dfs-linux-amd64
+#    goarch: amd64
+#    dockerfile: Dockerfile.goreleaser
+#    build_flag_templates:
+#      - "--platform=linux/amd64"
+#      - "--pull"
+#      - "--label=org.opencontainers.image.created={{.Date}}"
+#      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+#      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+#      - "--label=org.opencontainers.image.version={{.Version}}"
+#  - image_templates:
+#      - "fairdatasociety/fairos-dfs:v{{ .Version }}-arm64"
+#    use: buildx
+#    ids:
+#      - dfs-linux-arm64
+#    goarch: arm64
+#    dockerfile: Dockerfile.goreleaser
+#    build_flag_templates:
+#      - "--platform=linux/arm64"
+#      - "--pull"
+#      - "--label=org.opencontainers.image.created={{.Date}}"
+#      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+#      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+#      - "--label=org.opencontainers.image.version={{.Version}}"
+#docker_manifests:
+#  - name_template: fairdatasociety/fairos-dfs:v{{ .Major }}
+#    image_templates:
+#      - fairdatasociety/fairos-dfs:v{{ .Version }}-amd64
+#      - fairdatasociety/fairos-dfs:v{{ .Version }}-arm64
+#    skip_push: auto
+#  - name_template: fairdatasociety/fairos-dfs:v{{ .Major }}.{{ .Minor }}
+#    image_templates:
+#      - fairdatasociety/fairos-dfs:v{{ .Version }}-amd64
+#      - fairdatasociety/fairos-dfs:v{{ .Version }}-arm64
+#    skip_push: auto
+#  - name_template: fairdatasociety/fairos-dfs:v{{ .Major }}.{{ .Minor }}.{{ .Patch }}{{ with .Prerelease }}-{{ . }}{{ end }}
+#    image_templates:
+#      - fairdatasociety/fairos-dfs:v{{ .Version }}-amd64
+#      - fairdatasociety/fairos-dfs:v{{ .Version }}-arm64
+#  - name_template: fairdatasociety/fairos-dfs:latest
+#    image_templates:
+#      - fairdatasociety/fairos-dfs:v{{ .Version }}-amd64
+#      - fairdatasociety/fairos-dfs:v{{ .Version }}-arm64
