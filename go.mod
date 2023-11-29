@@ -1,4 +1,4 @@
-module github.com/fairdatasociety/fairOS-dfs
+module github.com/asabya/fairOS-dfs
 
 go 1.20
 
